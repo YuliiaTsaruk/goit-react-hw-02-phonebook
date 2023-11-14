@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Report } from 'notiflix/build/notiflix-report-aio';
 
 // import { GlobalStyle } from './GlobalStyle';
 
@@ -33,8 +33,10 @@ export class App extends Component {
     );
 
     if (checkName) {
-      Notify.failure(
-        `Cannot add to contacts this name!  ${contact.name} is already in contacts.`
+      Report.failure(
+        'Notiflix Failure',
+        `Cannot add to contacts this name: ${contact.name} is already in contacts.`,
+        'Okay'
       );
     } else {
       this.setState(prevState => {
