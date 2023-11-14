@@ -2,9 +2,8 @@ import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
+import { Filter } from './Filter/Filter';
 
-// import { Filter } from './Filter/Filter';
-// import { ContactList } from './ContactList/ContactList';
 // import { GlobalStyle } from './GlobalStyle';
 
 export class App extends Component {
@@ -16,8 +15,6 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
 
   addContact = newContact => {
@@ -41,6 +38,12 @@ export class App extends Component {
     });
   };
 
+  updateFilter = evt => {
+    this.setState({
+      filter: evt.target.value,
+    });
+  };
+
   render() {
     return (
       <div>
@@ -48,11 +51,14 @@ export class App extends Component {
           <h1>Phonebook</h1>
           <ContactForm onAdd={this.addContact} />
         </div>
+
         <div>
           <h2>Contacts</h2>
+          <Filter onUpdateFilter={this.updateFilter} />
           <ContactList
             contacts={this.state.contacts}
             deleteContact={this.deleteContact}
+            filter={this.state.filter}
           />
         </div>
       </div>

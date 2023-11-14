@@ -3,7 +3,10 @@ import * as Yup from 'yup';
 
 const contactSchema = Yup.object().shape({
   name: Yup.string().min(3, 'Too Short!').required('Required'),
-  number: Yup.string().min(9, 'Must be 9 or more').required('Required'),
+  number: Yup.string()
+    .matches(/^[0-9]+$/, 'Must contain only number 123456789')
+    .min(9, 'Must be 9 or more')
+    .required('Required'),
 });
 
 export const ContactForm = ({ onAdd }) => {
@@ -35,7 +38,7 @@ export const ContactForm = ({ onAdd }) => {
 
         <div>
           Number
-          <Field name="number" type="number" />
+          <Field name="number" type="tel" />
           <ErrorMessage name="number" component="span" />
         </div>
 
