@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 const contactSchema = Yup.object().shape({
   name: Yup.string().min(3, 'Too Short!').required('Required'),
   number: Yup.string()
-    .matches(/^[0-5]+$/, 'Must contain only number 12345')
+    .matches(/^[0-9]+$/, 'Must contain only number - 0123456789')
     .min(5, 'Must be 5 or more')
     .required('Required'),
 });
