@@ -1,4 +1,5 @@
 import { ContactElement } from 'components/ContactElement/ContactElement';
+import { List } from './ContactList.styled';
 
 export const ContactList = ({ contacts, deleteContact, filter }) => {
   const filteredContacts = contacts.filter(contact =>
@@ -6,7 +7,7 @@ export const ContactList = ({ contacts, deleteContact, filter }) => {
   );
 
   return (
-    <ul>
+    <List>
       {filteredContacts.map(contact => (
         <ContactElement
           key={contact.id}
@@ -16,6 +17,6 @@ export const ContactList = ({ contacts, deleteContact, filter }) => {
           onDelete={deleteContact}
         />
       ))}
-    </ul>
+    </List>
   );
 };

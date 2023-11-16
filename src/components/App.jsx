@@ -4,8 +4,8 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import { Report } from 'notiflix/build/notiflix-report-aio';
-
-// import { GlobalStyle } from './GlobalStyle';
+import { GlobalStyle } from './GlobalStyle';
+import { Container, MaineTitle, Section, Title } from './App.styled';
 
 export class App extends Component {
   state = {
@@ -63,22 +63,23 @@ export class App extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <h1>Phonebook</h1>
+      <Container>
+        <Section>
+          <MaineTitle>Phonebook</MaineTitle>
           <ContactForm onAdd={this.addContact} />
-        </div>
+        </Section>
 
-        <div>
-          <h2>Contacts</h2>
+        <Section>
+          <Title>Contacts</Title>
           <Filter onUpdateFilter={this.updateFilter} />
           <ContactList
             contacts={this.state.contacts}
             deleteContact={this.deleteContact}
             filter={this.state.filter}
           />
-        </div>
-      </div>
+        </Section>
+        <GlobalStyle />
+      </Container>
     );
   }
 }
